@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# DockerMaster: A master script for managing Docker containers
-
 # Function to check if Docker is installed
 check_docker_installed() {
   if command -v docker &> /dev/null; then
