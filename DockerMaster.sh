@@ -88,14 +88,14 @@ launch_container() {
 # Function to show running containers and ports
 show_running_containers() {
   echo -e "\nRunning containers:"
-  docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" | nl -w2 -s'. '
+  docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" | sed '1d' | nl -w2 -s'. '
 }
 
 # Function to stop and remove a container
 stop_remove_container() {
   echo -e "\nSelect a container to stop and remove:"
   containers=($(docker ps --format "{{.ID}}"))
-  docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" | nl -w2 -s'. '
+  docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" | sed '1d' | nl -w2 -s'. '
 
   read -p "Enter the number of the container to stop (or 'exit' to quit): " choice
   check_exit "$choice"
